@@ -52,6 +52,7 @@ class Trie{
 };
 ll fun(Trie* node,ll val){
     ll ans=0;
+    if(node->isempty(node))return 0;
     pl(i,40,0){
       ll msk=(val>>i)&1;
       ll req=1-msk;
