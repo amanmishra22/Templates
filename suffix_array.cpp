@@ -1,39 +1,21 @@
-void cnt_sort(vll& p,vll& c){
-    ll n=p.size();
-    vll cnt(n,0),pnew(n),pos(n,0);
-    lp(i,0,n)cnt[c[i]]++;
-    lp(i,1,n)pos[i]+=pos[i-1]+cnt[i-1];
-    lp(i,0,n){
-        ll x=c[p[i]];
-        pnew[pos[x]]=p[i];
-        pos[x]++;
-    }
-    p.swap(pnew);
-}
 vll suffix_array(string& s){
-    ll n=s.size(),k=0;
-    vll p(n),c(n);
-    vpll v(n);
-    lp(i,0,n)v[i]={s[i],i};
-    sort(all(v));
-    lp(i,0,n)p[i]=v[i].ss;
-    c[p[0]]=0;
-    lp(i,1,n)c[p[i]]=c[p[i-1]]+(v[i].ff!=v[i-1].ff);
-    while((1ll<<k)<n){
-      lp(i,0,n)p[i]=(p[i]-(1ll<<k)+n)%n;
-      cnt_sort(p,c);
-      vll cnew(n);
-      cnew[p[0]]=0;
-      lp(i,1,n){
-        pll prev={c[p[i-1]],c[(p[i-1]+(1ll<<k))%n]};
-        pll now={c[p[i]],c[(p[i]+(1ll<<k))%n]};
-        if(prev==now)cnew[p[i]]=cnew[p[i-1]];
-        else cnew[p[i]]=cnew[p[i-1]]+1;
-      }
-      c.swap(cnew);
-      k++;
+    ll n=s.size();
+    vll ans(n),r(n),tmp(n);
+    iota(all(ans),0ll);
+    copy(all(s),r.begin());
+    for(ll k=1;k<n;k*=2){
+        auto cmp=[&](ll i,ll j){
+            if(r[i]!=r[j])return r[i]<r[j];
+            ll ri=(i+k<n)?r[i+k]:-1;
+            ll rj=(j+k<n)?r[j+k]:-1;
+            return ri<rj;
+        };
+        sort(all(ans),cmp);
+        tmp[ans[0]]=0;
+        lp(i,1,n)tmp[ans[i]]=tmp[ans[i-1]]+cmp(ans[i-1],ans[i]);
+        r=tmp;
     }
-    return p;
+    return ans;
 }
 vll kasai_lcp_suffix(string& s,vll& p){
     ll n=s.size(),k=0;
