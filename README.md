@@ -8,6 +8,7 @@ Welcome to my Algorithm Templates Repository! This repository contains various a
 - [Usage](#usage)
 - [Contribution](#contribution)
 - [License](#license)
+- [Instruction](#Instructions)
 
 ## Algorithms Included
 
@@ -50,15 +51,15 @@ To use any of the algorithms in this repository, simply clone this repository an
 git clone https://github.com/yourusername/your-repo-name.git
 Once cloned, you can include the algorithms in your code as needed.
 
-Contribution
+## Contribution
 Feel free to contribute to this repository by adding new algorithms or improving existing ones. You can do this by forking the repository, making your changes, and submitting a pull request.
 
-License
+## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
 Thank you for visiting my Algorithm Templates Repository! Happy coding!
 
-### Instructions:
+## Instructions:
 1. Replace `yourusername` and `your-repo-name` with your actual GitHub username and repository name.
 2. Save this content into a file named `README.md` in your GitHub repository. 
 3. Adjust any sections or descriptions as needed to fit your preferences or any additional details you may want to include.
